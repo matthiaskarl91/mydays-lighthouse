@@ -1,0 +1,15 @@
+{
+  "name": "mydaysaudit",
+  "version": "1.0.0",
+  "description": "Lighthouse audits for mydays webshop",
+  "main": "index.js",
+  "preferGlobal": true,
+  "bin": "./index.js",
+  "author": "Matthias Karl",
+  "license": "MIT",
+  "dependencies": {
+    "chrome-launcher": "^0.10.2",
+    "commander": "^2.17.1",
+    "lighthouse": "^3.0.3"
+  }
+}
