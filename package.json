@@ -7,6 +7,9 @@
   "bin": "./index.js",
   "author": "Matthias Karl",
   "license": "MIT",
+  "scripts": {
+    "debug": "node --inspect-brk index.js start"
+  },
   "dependencies": {
     "chrome-launcher": "^0.10.2",
     "commander": "^2.17.1",

@@ -1,5 +1,7 @@
 const lighthouse = require('lighthouse');
-const chromeLauncher = require('chrome-launcher');
+const BrowserService = require('./services/BrowserService');
+const AuditService = require('./services/AuditService');
+
 const fs = require('fs');
 
 let result = [];
@@ -7,22 +9,30 @@ const urls = [
     'https://www.mydays.de',
     'https://www.mydays.de/erlebnisgeschenke/kulinarische-geschenke'
 ]
-function startFunction()
+async function startFunction()
 {
     const opts = {
         chromeFlags: ['--show-paint-rects']
     };
       
-    let resu = urls.map((url) => {
+    const auditOptions = {
+        url: 'https://www.mydays.de',
+        config: null
+    };
+    const auditService = await new AuditService();
+    const result = await auditService.startAudit(auditOptions);
+
+    const bla = 1;
+    /*let resu = urls.map((url) => {
         return launchChromeAndRunLighthouse(url, opts).then(results => {
             return mapResult(results);
         }).then(res => {
             return res;
         });
     });
-    console.log(resu);
+    console.log(resu);*/
 }
-
+/*
 function mapResult({categories, finalUrl})
 {
     const {performance, seo} = categories;
@@ -51,5 +61,5 @@ function launchChromeAndRunLighthouse(url, opts, config = null) {
         return chrome.kill().then(() => results.lhr)
       });
     });
-}
+}*/
 module.exports = startFunction;
