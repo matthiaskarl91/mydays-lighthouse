@@ -10,6 +10,6 @@ program
     .command('start [mandator]')
     .description('Start with the audit of the given mandator')
     .option('-a, --all')
-    .action(lighthouse);
+    .action(lighthouse.start);
 
 program.parse(process.argv);
