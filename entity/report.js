@@ -2,6 +2,7 @@ class Report
 {
     constructor()
     {
+        this.setTimestamp();
     }
 
     setTimestamp(timestamp = new Date())
@@ -28,3 +29,5 @@ class Report
         return this.audits;
     }
 }
+
+module.exports = Report;

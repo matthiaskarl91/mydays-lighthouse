@@ -9,11 +9,12 @@ class AuditService
             'https://www.mydays.de/erlebnisgeschenke/kulinarische-geschenke'
         ];
         this.opts = {
-            chromeFlags: ['--show-paint-rects']
+            chromeFlags: ['--show-paint-rects'],
+            disableDeviceEmulation: true
         };
     }
 
-    async performAudits()
+    async performAudits(progressbar)
     {
         const promises = this.urls.map(url => this.runAudit(url, this.opts));
         const result = await Promise.all(promises);
