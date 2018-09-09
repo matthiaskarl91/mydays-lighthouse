@@ -14,16 +14,16 @@ class Audits
         return this.url;
     }
 
-    setCategories(categories)
+    setPerformance(performance)
     {
-        this.categories = categories;
+        this.performance = performance;
 
         return this;
     }
 
-    getCategories()
+    getPerformance()
     {
-        return this.categories;
+        return this.performance;
     }
 }
 

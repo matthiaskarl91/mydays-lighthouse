@@ -1,5 +1,6 @@
 const Report = require('../entity/report');
 const Audit = require('../entity/audits');
+const Performance = require('../entity/performance');
 
 class ResultService
 {
@@ -18,9 +19,21 @@ class ResultService
     mapAudit(item)
     {
         const audit = new Audit();
-        audit.setUrl(item.finalUrl).setCategories(item.categories);
-
+        const performance = this.mapPerformance(item);
+        audit.setUrl(item.finalUrl).setPerformance(performance);
         return audit;
+    }
+
+    mapPerformance(resultItem)
+    {
+        const {categories, audits} = resultItem;
+        const performance = new Performance();
+        performance.setScore(categories.performance.score);
+        performance.setTitle(categories.performance.title);
+        const auditData = categories.performance.auditRefs.map(ref => audits[ref.id]);
+        performance.setAudits(auditData);
+
+        return performance;
     }
 }
 
