@@ -2,59 +2,67 @@ const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 const assert = require('assert');
 const ObjectId = mongoose.Schema.ObjectId;
+const ReportModel = require('../models/Report');
+const AuditModel = require('../models/Audits');
 
 class ReportRepository
 {
     constructor()
     {
         this.db = mongoose.connect('mongodb://localhost:27017/audit-manager');
-        this.reportSchema = mongoose.Schema({
-            _id: ObjectId,
-            timestamp: {type: Date},
-            //audits: [{type: ObjectId, ref: 'Audit'}]
-        });
-        this.auditSchema = mongoose.Schema({
-            _report: {type: Number, ref: 'Report'},
-            url: {type: String},
-            categories: {type: Array}
-        });
-
-        this.Report = mongoose.model('Report', this.reportSchema);
-        this.Audit = mongoose.model('Audit', this.auditSchema);
     }
 
     async createReport(reportData)
     {
-        //const report = await this.Report.create({timestamp:reportData.timestamp, _id: new mongoose.Types.ObjectId()})
-        const report = new this.Report({
-            timestamp: new Date(),
-            _id: new mongoose.Types.ObjectId(),
-            //audits: []
+        
+        const report = await this.saveReport();
+        const audits = await this.saveAudits(reportData.getAudits(), report);
+        /*const auditPromises = reportData.getAudits().map(async audit => {
+            const auditObj = new AuditModel({
+                _report: report._id,
+                url: audit.getUrl(),
+                categories: 'todos'
+            });;
+            try {
+                return await auditObj.save();
+            } catch (e) {
+                console.log(e);
+            }
         });
-        try {
-            let newReport = await report.save();
-        } catch (e) {
-            console.log(e);
-        }
-/*
-        //const auditPromises = report.getAudits().map(audit => this.createAudit(audit, report._id));
-        const auditPromises = report.getAudits().map(async audit => {
-            return await this.Audit.create({_report: report._id, url: 'bla', categories: []});
-        });
+        const audits = await Promise.all(auditPromises);*/
 
-        const audits = await Promise.all(auditPromises);
-*/
-        //const report = await this.Report.create(report);
-        //const audit = await this.Audit.create(auditData);
-        assert.equal(null, newReport);
         console.info('New report added');
-        this.db.disconnect();
+        mongoose.connection.close();
         return report;
     }
 
-    async createAudit(audit, reportId)
-    {
-        return await this.Audit.create({...audit, _report: reportId});
+    async saveReport() {
+        const report = new ReportModel({
+            createDate: new Date().getTime()
+            //audits: auditArray
+        });
+        try {
+            return await report.save();
+        } catch (e) {
+            console.log(e);
+        }
+    }
+
+    async saveAudits(audits, {id}) {
+        const auditPromises = await audits.map(async audit => {
+            const auditObj = new AuditModel({
+                _report: id,
+                url: audit.getUrl(),
+                categories: 'todos'
+            });;
+            try {
+                return await auditObj.save();
+            } catch (e) {
+                console.log(e);
+            }
+        });
+
+        return await Promise.all(auditPromises);
     }
 }
 
