@@ -1,5 +1,6 @@
 const AuditService = require('./service/AuditService');
 const ResultService = require('./service/ResultService');
+const ReportRepository = require('./repository/ReportRepository');
 
 class Controller
 {
@@ -13,6 +14,8 @@ class Controller
         try {
             const result = await AuditService.performAudits();
             const mappedResult = this.resultService.mapResult(result);
+            const reportRepository = new ReportRepository();
+            const persist = await reportRepository.createReport(mappedResult);
             const bla = 1;
             process.exit();
         } catch (e) {
