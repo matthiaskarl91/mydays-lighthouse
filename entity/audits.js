@@ -2,24 +2,28 @@ class Audits
 {
     constructor(){}
 
-    getScore()
+    setUrl(url)
     {
-        return this.score;
+        this.url = url;
+        
+        return this;
     }
 
-    setScore(score)
+    getUrl()
     {
-        this.score = score;
+        return this.url;
     }
 
-    getAudits()
+    setCategories(categories)
     {
-        return this.audits;
+        this.categories = categories;
+
+        return this;
     }
 
-    setAudits(audits)
+    getCategories()
     {
-        this.audits = audits;
+        return this.categories;
     }
 }
 

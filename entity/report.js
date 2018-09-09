@@ -1,50 +1,33 @@
 class Report
 {
-    //name;
-    //performance;
-    //bestPractices;
-    //seo;
-
     constructor()
     {
+        this.setTimestamp();
     }
 
-    setName(name)
+    setTimestamp(timestamp = new Date())
     {
-        this.name = name;
-    }
-    getName()
-    {
-        return this.name;
+        this.timestamp = timestamp;
+
+        return this;
     }
 
-    setPerformance(performance)
+    getTimestamp()
     {
-        this.performance = performance;
+        return this.timestamp;
     }
 
-    getPerformance()
+    setAudits(audits)
     {
-        return this.performance;
+        this.audits = audits;
+
+        return this;
     }
 
-    setBestPractices(bestPractices)
+    getAudits()
     {
-        this.bestPractices = bestPractices;
-    }
-
-    getBestPractices()
-    {
-        return this.bestPractices;
-    }
-
-    setSeo(seo)
-    {
-        this.seo = seo;
-    }
-
-    getSeo()
-    {
-        return this.seo;
+        return this.audits;
     }
 }
+
+module.exports = Report;
