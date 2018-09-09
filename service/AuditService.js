@@ -10,7 +10,11 @@ class AuditService
         ];
         this.opts = {
             chromeFlags: ['--show-paint-rects'],
-            disableDeviceEmulation: true
+            disableDeviceEmulation: true,
+            enableNetworkThrottling: false,
+            throttling: {
+                cpuSlowdownMultiplier: 1
+            }
         };
     }
 

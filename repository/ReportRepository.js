@@ -4,6 +4,7 @@ const assert = require('assert');
 const ObjectId = mongoose.Schema.ObjectId;
 const ReportModel = require('../models/Report');
 const AuditModel = require('../models/Audits');
+const PerformanceModel = require('../models/Performance');
 
 class ReportRepository
 {
@@ -17,20 +18,6 @@ class ReportRepository
         
         const report = await this.saveReport();
         const audits = await this.saveAudits(reportData.getAudits(), report);
-        /*const auditPromises = reportData.getAudits().map(async audit => {
-            const auditObj = new AuditModel({
-                _report: report._id,
-                url: audit.getUrl(),
-                categories: 'todos'
-            });;
-            try {
-                return await auditObj.save();
-            } catch (e) {
-                console.log(e);
-            }
-        });
-        const audits = await Promise.all(auditPromises);*/
-
         console.info('New report added');
         mongoose.connection.close();
         return report;
@@ -50,13 +37,22 @@ class ReportRepository
 
     async saveAudits(audits, {id}) {
         const auditPromises = await audits.map(async audit => {
+            const {performance} = audit;
             const auditObj = new AuditModel({
                 _report: id,
-                url: audit.getUrl(),
-                categories: 'todos'
+                url: audit.getUrl()
             });;
             try {
-                return await auditObj.save();
+                const auditEntity = await auditObj.save();
+                const performanceObj = new PerformanceModel({
+                    title: audit.title,
+                    score: performance.score,
+                    audits: performance.audits,
+                    _audit: auditEntity._id
+                });
+                await performanceObj.save();
+
+                return auditEntity;
             } catch (e) {
                 console.log(e);
             }
