@@ -1,5 +1,5 @@
-//@flow
 
+//@flow
 const lighthouse = require('lighthouse');
 const chromeLauncher = require('chrome-launcher');
 
@@ -23,7 +23,7 @@ class AuditService
         };
     }
 
-    async performAudits()
+    async performAudits(): Promise<Result>
     {
         const promises = this.urls.map(url => this.runAudit(url, this.opts));
         const result = await Promise.all(promises);
