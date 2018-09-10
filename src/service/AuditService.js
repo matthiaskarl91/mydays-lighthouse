@@ -1,8 +1,13 @@
+//@flow
+
 const lighthouse = require('lighthouse');
 const chromeLauncher = require('chrome-launcher');
 
 class AuditService
 {
+    urls: Array<string>;
+    opts: Object;
+
     constructor() {
         this.urls = [
             'https://www.mydays.de',
@@ -18,7 +23,7 @@ class AuditService
         };
     }
 
-    async performAudits(progressbar)
+    async performAudits()
     {
         const promises = this.urls.map(url => this.runAudit(url, this.opts));
         const result = await Promise.all(promises);
@@ -26,13 +31,13 @@ class AuditService
         return result;
     }
 
-    async runAudit(url, opts) {
+    async runAudit(url:string, opts: Object) {
         const result = await this.launchChromeAndRunLighthouse(url, opts);
 
         return result;
     }
 
-    async launchChromeAndRunLighthouse(url, opts, config = null) {
+    async launchChromeAndRunLighthouse(url:string, opts: Object, config: ?Object = null) {
         return await chromeLauncher.launch({chromeFlags: opts.chromeFlags}).then(chrome => {
           opts.port = chrome.port;
           return lighthouse(url, opts, config).then(results => {

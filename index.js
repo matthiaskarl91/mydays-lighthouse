@@ -2,7 +2,7 @@
 'use strict';
 
 const program = require('commander');
-const lighthouse = require('./lighthouse');
+const lighthouse = require('./lib/lighthouse');
 
 
 program
