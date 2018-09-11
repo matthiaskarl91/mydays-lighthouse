@@ -3,7 +3,7 @@
 [include]
 
 [libs]
-
+.*/fflow-typed/.*
 [lints]
 
 [options]
