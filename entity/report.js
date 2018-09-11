@@ -1,32 +1,57 @@
 class Report
 {
-    constructor()
-    {
+    constructor() {
         this.setTimestamp();
     }
 
-    setTimestamp(timestamp = new Date())
-    {
+    setTimestamp(timestamp = new Date()) {
         this.timestamp = timestamp;
 
         return this;
     }
 
-    getTimestamp()
-    {
+    getTimestamp() {
         return this.timestamp;
     }
 
-    setAudits(audits)
-    {
+    setAudits(audits) {
         this.audits = audits;
 
         return this;
     }
 
-    getAudits()
-    {
+    getAudits() {
         return this.audits;
+    }
+
+    setConfig(config) {
+        this.config = config;
+
+        return this;
+    }
+
+    getConfig() {
+        return this.config;
+    }
+
+    setUserAgent(userAgent) {
+        this.userAgent = userAgent;
+
+        return this;
+    }
+
+    getUserAgent() {
+        return this.userAgent;
+    }
+
+    setAccessibility(accessibility) {
+        this.accessibility = accessibility;
+
+        return this;
+    }
+
+    getAccessibility() {
+        return this.accessibility;
     }
 }
 

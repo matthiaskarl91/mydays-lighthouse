@@ -1,6 +1,6 @@
 const Category = require('./category');
 
-class SEO extends Category
+class Accessibility extends Category
 {
     constructor(){
         super();
@@ -8,4 +8,4 @@ class SEO extends Category
 
 }
 
-module.exports = SEO;
+module.exports = Accessibility;
