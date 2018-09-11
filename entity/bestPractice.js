@@ -1,8 +1,11 @@
-const Audits = require('./audits');
+const Category = require('./category');
 
-class BestPractices extends Audits
+class BestPractice extends Category
 {
     constructor(){
         super();
     }
+
 }
+
+module.exports = BestPractice;
