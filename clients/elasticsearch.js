@@ -1,8 +1,9 @@
 const elasticsearch = require('elasticsearch');
 
+
 class ElasticsearchClient {
     
-    client;
+    //client;
 
     constructor() {
         this.client = new elasticsearch.Client({
@@ -13,7 +14,7 @@ class ElasticsearchClient {
 
     async ping() {
         try {
-            await this.client.ping({
+            const res = await this.client.ping({
                 requestTimeout: 30000,
             });
 
@@ -28,7 +29,6 @@ class ElasticsearchClient {
             const res = await this.client.indices.create({
                 index
             });
-            res.status(200);
 
             return res;
         } catch(e) {
@@ -41,7 +41,20 @@ class ElasticsearchClient {
             const res = await this.client.indices.exists({
                 index
             })
-            res.status(200);
+
+            return res;
+        } catch(e) {
+            throw new Error(e);
+        }
+    }
+
+    async putMapping(index, type, body) {
+        try {
+            const res = await this.client.indices.putMapping({
+                index,
+                type,
+                body
+            });
 
             return res;
         } catch(e) {
@@ -56,7 +69,6 @@ class ElasticsearchClient {
                 type,
                 body
             });
-            res.status(200);
 
             return res;
         } catch(e) {
