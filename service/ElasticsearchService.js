@@ -15,8 +15,8 @@ const doctype = {
                             "properties": {
                                 "score": { "type": "float" },
                                 "title": { "type": "text" },
-                                "auditItems": { "type": "nested" }
-                                /*"auditItems": [
+                                //"auditItems": { "type": "nested" }
+                                "auditItems": [
                                     {
                                         "id": { "type": "text" },
                                         "score": { "type": "float" },
@@ -24,7 +24,7 @@ const doctype = {
                                         "description": { "type": "text" },
                                         "rawValue": { "type": "float" },
                                     }
-                                ]*/
+                                ]
                             }
                         }
                     }
@@ -38,12 +38,13 @@ class ElasticsearchService {
     constructor() {
         this.indexName = 'lighthouse';
         this.client = new ElasticsearchClient();
+        this.doctype = doctype;
     }
 
     async init() {
         if (!await this.client.indexExist(this.indexName)) {
             await this.client.createIndex(this.indexName);
-            await this.client.putMapping(this.indexName, doctype, {});
+            await this.client.putMapping(this.indexName, this.doctype, {});
         }
     }
 
@@ -51,7 +52,7 @@ class ElasticsearchService {
         const body = {
             "timestamp": mappedResult.timestamp,
             "userAgent": mappedResult.userAgent,
-            "page": audits.map((audit) => ({
+            "page": mappedResult.audits.map((audit) => ({
                 "route": audit.url,
                 "performance": {
                     "score": audit.performance.score,
