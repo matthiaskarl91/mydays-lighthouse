@@ -10,7 +10,8 @@
   "scripts": {
     "debug": "node --inspect-brk index.js start",
     "run": "node index.js start",
-    "elastic.deleteindex": "curl -X DELETE \"localhost:9200/lighthouse\""
+    "elastic.deleteindex": "curl -X DELETE \"localhost:9200/lighthouse\"",
+    "test": "jest"
   },
   "dependencies": {
     "chrome-launcher": "^0.10.2",
@@ -20,5 +21,8 @@
     "lighthouse": "^3.0.3",
     "mongoose": "^5.2.13",
     "uuid": "^3.3.2"
+  },
+  "devDependencies": {
+    "jest": "^23.6.0"
   }
 }

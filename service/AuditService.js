@@ -18,7 +18,7 @@ class AuditService
         };
     }
 
-    async performAudits(progressbar)
+    async performAudits()
     {
         const promises = this.urls.map(url => this.runAudit(url, this.opts));
         const result = await Promise.all(promises);
