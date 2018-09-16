@@ -1,4 +1,5 @@
 const ElasticsearchClient = require('../clients/elasticsearch');
+const ElasticQuery = require('../query/ElasticQuery');
 /*const doctype = {
     "mappings": {
         "doc": {
@@ -59,6 +60,13 @@ class ElasticsearchService {
     }
 
     async save({timestamp, userAgent, audits}) {
+        const body = audits.map((audit) => {
+            const query = new ElasticQuery();
+            query.setTimestamp(timestamp);
+        })
+
+
+
         const body = audits.map((audit) => ({
             timestamp,
             userAgent,
