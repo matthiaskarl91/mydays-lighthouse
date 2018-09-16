@@ -9,7 +9,8 @@
   "license": "MIT",
   "scripts": {
     "debug": "node --inspect-brk index.js start",
-    "run": "node index.js start"
+    "run": "node index.js start",
+    "elastic.deleteindex": "curl -X DELETE \"localhost:9200/lighthouse\""
   },
   "dependencies": {
     "chrome-launcher": "^0.10.2",

@@ -4,7 +4,7 @@ class Report
         this.setTimestamp();
     }
 
-    setTimestamp(timestamp = new Date()) {
+    setTimestamp(timestamp = new Date().getTime()) {
         this.timestamp = timestamp;
 
         return this;

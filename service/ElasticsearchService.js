@@ -1,11 +1,11 @@
 const ElasticsearchClient = require('../clients/elasticsearch');
-const doctype = {
+/*const doctype = {
     "mappings": {
         "doc": {
             "properties": {
                 "timestamp": {
                     "type":   "date", 
-                    "format": "strict_date_optional_time||epoch_millis"
+                    "format": "epoch_millis"
                 },
                 "userAgent": { "type": "text" },
                 "page": [{
@@ -16,21 +16,30 @@ const doctype = {
                                 "score": { "type": "float" },
                                 "title": { "type": "text" },
                                 //"auditItems": { "type": "nested" }
-                                "auditItems": [
-                                    {
+                                "auditItems": [{
+                                    "properties": {
                                         "id": { "type": "text" },
                                         "score": { "type": "float" },
                                         "title": { "type": "text" },
                                         "description": { "type": "text" },
                                         "rawValue": { "type": "float" },
                                     }
-                                ]
+                                }]
                             }
                         }
                     }
                 }]
             }
         }
+    }
+};*/
+
+const doctype = {
+    properties: {
+        "timestamp": { "type": "date", "format": "epoch_millis" },
+        "userAgent": { "type": "text" },
+        "page": { "type": "text" },
+        "performance":{ "type": "float" }
     }
 };
 
@@ -39,30 +48,26 @@ class ElasticsearchService {
         this.indexName = 'lighthouse';
         this.client = new ElasticsearchClient();
         this.doctype = doctype;
+        this.doctypeName = 'mydays_audits';
     }
 
     async init() {
         if (!await this.client.indexExist(this.indexName)) {
             await this.client.createIndex(this.indexName);
-            await this.client.putMapping(this.indexName, this.doctype, {});
+            await this.client.putMapping(this.indexName, this.doctypeName, this.doctype);
         }
     }
 
-    async save(mappedResult) {
-        const body = {
-            "timestamp": mappedResult.timestamp,
-            "userAgent": mappedResult.userAgent,
-            "page": mappedResult.audits.map((audit) => ({
-                "route": audit.url,
-                "performance": {
-                    "score": audit.performance.score,
-                    "title": audit.performance.title,
-                    "auditItems": audit.performance.audits
-                }
-            }))
-        };
+    async save({timestamp, userAgent, audits}) {
+        const body = audits.map((audit) => ({
+            timestamp,
+            userAgent,
+            "page": audit.url,
+            "performance": audit.performance.score
+        }));
 
-        await this.client.addDocument(this.indexName, doctype, body);
+        await this.client.addDocuments(
+            this.indexName, this.doctypeName, body);
     } 
 }
 
