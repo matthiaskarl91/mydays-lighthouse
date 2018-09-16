@@ -28,16 +28,16 @@ class Category
         return this.title;
     }
 
-    setAudits(audits)
+    setResults(results)
     {
-        this.audits = audits;
+        this.results = results;
 
         return this;
     }
 
-    getTitle()
+    getResults()
     {
-        return this.title;
+        return this.results;
     }
 }
 

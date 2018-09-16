@@ -43,7 +43,7 @@ class ResultService
         myPerformance.setScore(performance.score);
         myPerformance.setTitle(performance.title);
         const auditData = performance.auditRefs.map(ref => audits[ref.id]);
-        myPerformance.setAudits(auditData);
+        myPerformance.setResults(auditData);
 
         return myPerformance;
     }
@@ -53,7 +53,7 @@ class ResultService
         bestPractice.setScore(bestPractices.score);
         bestPractice.setTitle(bestPractices.title);
         const auditData = bestPractices.auditRefs.map(ref => audits[ref.id]);
-        bestPractice.setAudits(auditData);
+        bestPractice.setResults(auditData);
 
         return bestPractice;
     }
@@ -63,7 +63,7 @@ class ResultService
         mySeo.setScore(seo.score);
         mySeo.setTitle(seo.title);
         const auditData = seo.auditRefs.map(ref => audits[ref.id]);
-        mySeo.setAudits(auditData);
+        mySeo.setResults(auditData);
 
         return mySeo;
     }
@@ -73,7 +73,7 @@ class ResultService
         myAccessibility.setScore(accessibility.score);
         myAccessibility.setTitle(accessibility.title);
         const auditData = accessibility.auditRefs.map(ref => audits[ref.id]);
-        myAccessibility.setAudits(auditData);
+        myAccessibility.setResults(auditData);
 
         return myAccessibility;
     }

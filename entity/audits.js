@@ -1,4 +1,4 @@
-class Audits
+class Audit
 {
     constructor(){}
 
@@ -54,4 +54,4 @@ class Audits
 }
 
 
-module.exports = Audits;
+module.exports = Audit;
