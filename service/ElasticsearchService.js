@@ -1,5 +1,6 @@
 const ElasticsearchClient = require('../clients/elasticsearch');
 const ElasticQuery = require('../query/ElasticQuery');
+const uuid = require('uuid/v1');
 /*const doctype = {
     "mappings": {
         "doc": {
@@ -60,22 +61,18 @@ class ElasticsearchService {
     }
 
     async save({timestamp, userAgent, audits}) {
-        const body = audits.map((audit) => {
+        const body = [];
+        audits.forEach((audit) => {
             const query = new ElasticQuery();
             query.setTimestamp(timestamp);
-        })
+            query.setUserAgent(userAgent);
+            query.setPage(audit.url);
+            query.setPerformance(audit.performance.score);
+            body.push({ create: { "_index" : this.indexName, "_type" : this.doctypeName, "_id": uuid() } });
+            body.push(query);
+        });
 
-
-
-        const body = audits.map((audit) => ({
-            timestamp,
-            userAgent,
-            "page": audit.url,
-            "performance": audit.performance.score
-        }));
-
-        await this.client.addDocuments(
-            this.indexName, this.doctypeName, body);
+        await this.client.addDocuments(body);
     } 
 }
 

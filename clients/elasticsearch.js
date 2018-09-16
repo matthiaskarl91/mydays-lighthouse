@@ -62,16 +62,12 @@ class ElasticsearchClient {
         }
     }
 
-    async addDocuments(index, type, body) {
+    async addDocuments(body) {
         try {
-            const request = [];
-            body.forEach((item, i) => {
-                request.push({ create: { "_index" : index, "_type" : type, "_id" : i } });
-                request.push(item);
-            });
+            
 
             const res = await this.client.bulk({
-                "body": request
+                body
             })
         } catch(e) {
             throw new Error(e);
