@@ -9,13 +9,16 @@
   "license": "MIT",
   "scripts": {
     "debug": "node --inspect-brk index.js start",
-    "run": "node index.js start"
+    "run": "node index.js start",
+    "elastic.deleteindex": "curl -X DELETE \"localhost:9200/lighthouse\""
   },
   "dependencies": {
     "chrome-launcher": "^0.10.2",
     "cli-progress": "^2.1.0",
     "commander": "^2.17.1",
+    "elasticsearch": "^15.1.1",
     "lighthouse": "^3.0.3",
-    "mongoose": "^5.2.13"
+    "mongoose": "^5.2.13",
+    "uuid": "^3.3.2"
   }
 }
