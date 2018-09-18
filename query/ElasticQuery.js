@@ -1,227 +1,260 @@
 class ElasticQuery {
-    timestamp;
     constructor(){}
 
+    /**
+     * @param {Date} timestamp 
+     */
     setTimestamp(timestamp) {
         this.timestamp = timestamp;
-
-        return this;
     }
     getTimestamp() {
         return this.timestamp;
     }
 
+    /**
+     * @param {string} userAgent 
+     */
     setUserAgent(userAgent) {
         this.userAgent = userAgent;
-
-        return this;
     }
     getUserAgent() {
         return this.userAgent;
     }
 
+    /**
+     * @param {string} page 
+     */
     setPage(page) {
         this.page = page;
-
-        return this;
     }
     getPage() {
         return this.page;
     }
 
+    /**
+     * @param {float} performance 
+     */
     setPerformance(performance) {
         this.performance = performance;
-
-        return this;
     }
     getPerformance() {
         return this.performance;
     }
 
+    /**
+     * @param {float} bestpractice 
+     */
     setBestPractice(bestpractice) {
         this.bestPractice = bestpractice;
-
-        return this;
     }
     getBestPractice() {
         return this.bestPractice;
     }
 
+    /**
+     * @param {float} seo 
+     */
     setSeo(seo) {
-        this.seo = seo;
-
-        return this;
+        this.seo = seo; 
     }
     getSeo() {
-        return this;
+        return this.seo;
     }
 
-    setFirstContentfulPaint(firstContentfullPaint) {
-        this.firstContentfullPaint = firstContentfullPaint;
-
-        return this;
+    /**
+     * @param {float} firstContentfullPaint 
+     */
+    setFirstContentfulPaint(firstContentfulPaint) {
+        this.firstContentfulPaint = firstContentfulPaint; 
     }
 
+    /**
+     * @param {float} firstMeaningfullPaint 
+     */
     setFirstMeaningfulPaint(firstMeaningfullPaint) {
         this.firstMeaningfullPaint = firstMeaningfullPaint;
-
-        return this;
     }
 
+    /**
+     * @param {float} speedIndex 
+     */
     setSpeedIndex(speedIndex) {
         this.speedIndex = speedIndex;
-
-        return this;
     }
 
+    /**
+     * @param {float} interactive 
+     */
     setInteractive(interactive) {
         this.interactive = interactive;
-
-        return this;
     }
 
+    /**
+     * @param {float} firstCPUIdle 
+     */
     setFirstCPUIdle(firstCPUIdle) {
         this.firstCPUIdle = firstCPUIdle;
-
-        return this;
     }
 
+    /**
+     * @param {float} estInputLatency 
+     */
     setEstimatedInputLatency(estInputLatency) {
         this.estimatedInputLatency = estInputLatency;
-
-        return this;
     }
 
+    /**
+     * @param {float} renderBlockingResources 
+     */
     setRenderBlockingResources(renderBlockingResources) {
         this.renderBlockingResources = renderBlockingResources;
-
-        return this;
     }
 
+    /**
+     * @param {array} renderBlockingResourcesData 
+     */
     setRenderBlockingResourcesData(renderBlockingResourcesData) {
         this.renderBlockingResourcesData = renderBlockingResourcesData;
-
-        return this;
     }
 
+    /**
+     * @param {float} usesResponsiveImages 
+     */
     setUsesResponsiveImages(usesResponsiveImages) {
         this.usesResponsiveImages = usesResponsiveImages;
-
-        return this;
     }
 
+    /**
+     * @param {array} usesResponsiveImagesData 
+     */
     setUsesResponsiveImagesData(usesResponsiveImagesData) {
         this.usesResponsiveImagesData = usesResponsiveImagesData;
-
-        return this;
     }
 
+    /**
+     * @param {float} offscreenImages 
+     */
     setOffscreenImages(offscreenImages) {
         this.offscreenImages = offscreenImages;
-
-        return this;
     }
 
+    /**
+     * @param {array} offscreenImagesData 
+     */
     setOffscreenImagesData(offscreenImagesData) {
         this.offscreenImagesData = offscreenImagesData;
-
-        return this;
     }
 
+    /**
+     * @param {float} unminifiedCss 
+     */
     setUnminifiedCss(unminifiedCss) {
         this.unminifiedCss = unminifiedCss;
-
-        return this;
     }
 
+    /**
+     * @param {array} unminifiedCssData 
+     */
     setUnminifiedCssData(unminifiedCssData) {
         this.unminifiedCssData = unminifiedCssData;
-
-        return this;
     }
 
+    /**
+     * @param {float} unminifiedJS 
+     */
     setUnminifiedJS(unminifiedJS) {
         this.unminifiedJS = unminifiedJS;
-
-        return this;
     }
 
+    /**
+     * @param {array} unminifiedJSData 
+     */
     setUnminifiedJSData(unminifiedJSData) {
         this.unminifiedJSData = unminifiedJSData;
-
-        return this;
     }
 
+    /**
+     * @param {float} unusedCssRules 
+     */
     setUnusedCssRules(unusedCssRules) {
         this.unusedCssRules = unusedCssRules;
-
-        return this;
     }
 
+    /**
+     * @param {array} unusedCssRulesData 
+     */
     setUnusedCssRulesData(unusedCssRulesData) {
         this.unusedCssRulesData = unusedCssRulesData;
-
-        return this;
     }
 
+    /**
+     * @param {float} usesOptimizedImages 
+     */
     setUsesOptimizedImages(usesOptimizedImages) {
         this.usesOptimizedImages = usesOptimizedImages;
-
-        return this;
     }
 
+    /**
+     * @param {array} usesOptimizedImagesData 
+     */
     setUsesOptimizedImagesData(usesOptimizedImagesData) {
         this.usesOptimizedImagesData = usesOptimizedImagesData;
-
-        return this;
     }
 
+    /**
+     * @param {float} usesWebpImages 
+     */
     setUsesWebpImages(usesWebpImages) {
         this.usesWebpImages = usesWebpImages;
-
-        return this;
     }
 
+    /**
+     * @param {float} usesRelPreconnect 
+     */
     setUsesRelPreconnect(usesRelPreconnect) {
         this.usesRelPreconnect = usesRelPreconnect;
-        
-        return this;
     }
 
+    /**
+     * @param {float} timeToFirstByte 
+     */
     setTimeToFirstByte(timeToFirstByte) {
         this.timeToFirstByte = timeToFirstByte;
-
-        return this;
     }
 
+    /**
+     * @param {float} totalByteWeight 
+     */
     setTotalByteWeight(totalByteWeight) {
         this.totalByteWeight = totalByteWeight;
-
-        return this;
     }
 
+    /**
+     * @param {float} totalByteWeightData 
+     */
     setTotalByteWeightData(totalByteWeightData) {
         this.totalByteWeightData = totalByteWeightData;
-
-        return this;
     }
 
+    /**
+     * @param {float} domSize 
+     */
     setDomSize(domSize) {
         this.domSize = domSize;
-
-        return this;
     }
 
+    /**
+     * @param {float} bootupTime 
+     */
     setBootupTime(bootupTime) {
         this.bootupTime = bootupTime;
-
-        return this;
     }
 
+    /**
+     * @param {float} mainthreadWorkBreakdown 
+     */
     setMainThreadWorkBreakdown(mainthreadWorkBreakdown) {
         this.mainthreadWorkBreakdown = mainthreadWorkBreakdown;
-
-        return this;
     }
 }
 
