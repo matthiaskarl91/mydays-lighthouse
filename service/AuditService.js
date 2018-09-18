@@ -9,7 +9,7 @@ class AuditService
             'https://www.mydays.de/erlebnisgeschenke/kulinarische-geschenke'
         ];
         this.opts = {
-            chromeFlags: ['--show-paint-rects'],
+            chromeFlags: ['--show-paint-rects', '--no-sandbox'],
             disableDeviceEmulation: true,
             enableNetworkThrottling: false,
             throttling: {
