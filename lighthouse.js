@@ -21,7 +21,7 @@ class Controller
             await elasticSearchService.save(mappedResult);
             process.exit();
         } catch (e) {
-            console.log(e);
+            throw new Error(e);
         }
     }
 }
