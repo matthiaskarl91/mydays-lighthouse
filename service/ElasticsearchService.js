@@ -86,7 +86,7 @@ class ElasticsearchService {
     async init() {
         if (!await this.client.indexExist(this.indexName)) {
             await this.client.createIndex(this.indexName);
-            await this.client.putMapping(this.indexName, this.doctypeName, this.doctype);
+            //await this.client.putMapping(this.indexName, this.doctypeName, this.doctype);
         }
     }
 
@@ -134,7 +134,7 @@ class ElasticsearchService {
         query.setUsesWebpImages(perfResults[13].displayValue[1]);
         query.setUsesRelPreconnect(perfResults[15].rawValue);
         query.setTimeToFirstByte(perfResults[16].rawValue);
-        query.setTotalByteWeight(perfResults[20].displayValue);
+        query.setTotalByteWeight(perfResults[20].displayValue[1]);
         query.setTotalByteWeightData(perfResults[20].details.items);
         query.setDomSize(perfResults[22].rawValue);
         query.setBootupTime(perfResults[27].rawValue);
