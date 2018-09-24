@@ -32,33 +32,14 @@ class ElasticQuery {
     }
 
     /**
+     * PERFORMANCE BLOCK
+     */
+
+    /**
      * @param {float} performance 
      */
     setPerformance(performance) {
         this.performance = performance;
-    }
-    getPerformance() {
-        return this.performance;
-    }
-
-    /**
-     * @param {float} bestpractice 
-     */
-    setBestPractice(bestpractice) {
-        this.bestPractice = bestpractice;
-    }
-    getBestPractice() {
-        return this.bestPractice;
-    }
-
-    /**
-     * @param {float} seo 
-     */
-    setSeo(seo) {
-        this.seo = seo; 
-    }
-    getSeo() {
-        return this.seo;
     }
 
     /**
@@ -255,6 +236,148 @@ class ElasticQuery {
      */
     setMainThreadWorkBreakdown(mainthreadWorkBreakdown) {
         this.mainthreadWorkBreakdown = mainthreadWorkBreakdown;
+    }
+
+    /**
+     * BEST PRACTICE BLOCK
+     */
+
+    /**
+     * @param {float} bestpractice 
+     */
+    setBestPractice(bestpractice) {
+        this.bestPractice = bestpractice;
+    }
+
+    setUsesPassiveEventListeners(usesPassiveEventListeners) {
+        this.usesPassiveEventListeners = usesPassiveEventListeners;
+    }
+
+    setUsesPassiveEventListenersData(usesPassiveEventListenersData) {
+        this.usesPassiveEventListenersData = usesPassiveEventListenersData;
+    }
+
+    setNoDocumentWrite(noDocumentWrite) {
+        this.noDocumentWrite = noDocumentWrite;
+    }
+
+    setNoDocumentWriteData(noDocumentWriteData) {
+        this.noDocumentWriteData = noDocumentWriteData;
+    }
+
+    setExternalAnchorsUseRelNoopener(externalAnchorsUseRelNoopener) {
+        this.externalAnchorsUseRelNoopener = externalAnchorsUseRelNoopener;
+    }
+
+    setExternalAnchorsUseRelNoopenerData(externalAnchorsUseRelNoopenerData) {
+        this.externalAnchorsUseRelNoopenerData = externalAnchorsUseRelNoopenerData;
+    }
+
+    setGeolocationOnStart(geolocationOnStart) {
+        this.geolocationOnStart = geolocationOnStart;
+    }
+
+    setNoVulnerableLibraries(noVulnerableLibraries) {
+        this.noVulnerableLibraries = noVulnerableLibraries;
+    }
+
+    setNoVulnerableLibrariesData(noVulnerableLibrariesData) {
+        this.noVulnerableLibrariesData = noVulnerableLibrariesData;
+    }
+
+    setNotificationOnStart(notificationOnStart) {
+        this.notificationOnStart = notificationOnStart;
+    }
+
+    setDeprecations(deprecations) {
+        this.deprecations = deprecations;
+    }
+
+    setDeprecationsData(deprecationsData) {
+        this.deprecationsData = deprecationsData;
+    }
+
+    setErrorsInConsole(errorsInConsole) {
+        this.errorsInConsole = errorsInConsole;
+    }
+
+    setErrorsInConsoleData(errorsInConsoleData) {
+        this.errorsInConsoleData = errorsInConsoleData;
+    }
+
+    /**
+     * SEO BLOCK
+     */
+
+    /**
+     * @param {float} seo 
+     */
+    setSeo(seo) {
+        this.seo = seo; 
+    }
+
+    setViewport(viewport) {
+        this.viewport = viewport;
+    }
+
+    setDocumentTitle(documentTitle) {
+        this.documentTitle = documentTitle;
+    }
+
+    setMetaDescription(metaDescription) {
+        this.metaDescription = metaDescription;
+    }
+
+    setHttpStatusCode(httpStatusCode) {
+        this.httpStatusCode = httpStatusCode;
+    }
+
+    setLinkText(linkText) {
+        this.linkText = linkText;
+    }
+
+    setLinkTextData(linkTextData) {
+        this.linkTextData = linkTextData;
+    }
+
+    setIsCrawlable(isCrawlable) {
+        this.isCrawlable = isCrawlable;
+    }
+
+    setRobotsTxt(robotsTxt) {
+        this.robotsTxt = robotsTxt;
+    }
+
+    setHreflang(hreflang) {
+        this.hreflang = hreflang;
+    }
+
+    setCanonical(canonical) {
+        this.canonical = canonical;
+    }
+
+    setFontsize(fontsize) {
+        this.fontsize = fontsize;
+    }
+
+    setFontsizeData(fontsizeData) {
+        this.fontsizeData = fontsizeData;
+    }
+
+    /**
+     * ACCESSIBILITY BLOCK
+     */
+
+    setAccessibility(accessibility) {
+        this.accessibility = accessibility;
+    }
+
+    setDuplicateId(duplicateId) {
+        this.duplicateId = duplicateId;
+    }
+
+    setDuplicateIdData(duplicateIdData) {
+        this.duplicateIdData = duplicateIdData;
     }
 }
 
