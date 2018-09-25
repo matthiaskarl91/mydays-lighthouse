@@ -13,6 +13,8 @@ class ElasticQueryMapper {
         this.query.setTimestamp(timestamp);
         this.query.setUserAgent(userAgent);
         this.query.setPage(url);
+        this.query.setAverageAnalyticsTime(0);
+        this.query.setIsMobile();
     }
     
     setPerformanceData({performance}) {
@@ -37,7 +39,7 @@ class ElasticQueryMapper {
         this.query.setUnusedCssRules(results[11].displayValue[1]);
         this.query.setUnusedCssRulesData(results[11].details.items);
         this.query.setUsesOptimizedImages(results[12].displayValue[1]);
-        this.query.setUsesOptimizedImagesData(results[12].displayValue[1]);
+        this.query.setUsesOptimizedImagesData(results[12].details.items);
         this.query.setUsesWebpImages(results[13].displayValue[1]);
         this.query.setUsesRelPreconnect(results[15].rawValue);
         this.query.setTimeToFirstByte(results[16].rawValue);

@@ -31,6 +31,14 @@ class ElasticQuery {
         return this.page;
     }
 
+    setAverageAnalyticsTime(time) {
+        this.averageAnalyticsTime = time;
+    }
+
+    setIsMobile(isMobile = false) {
+        this.isMobile = isMobile;
+    }
+
     /**
      * PERFORMANCE BLOCK
      */
@@ -52,8 +60,8 @@ class ElasticQuery {
     /**
      * @param {float} firstMeaningfullPaint 
      */
-    setFirstMeaningfulPaint(firstMeaningfullPaint) {
-        this.firstMeaningfullPaint = firstMeaningfullPaint;
+    setFirstMeaningfulPaint(firstMeaningfulPaint) {
+        this.firstMeaningfulPaint = firstMeaningfulPaint;
     }
 
     /**
@@ -361,7 +369,14 @@ class ElasticQuery {
     }
 
     setFontsizeData(fontsizeData) {
-        this.fontsizeData = fontsizeData;
+        this.fontsizeData = fontsizeData.map(({coverage, fontSize, selector, source}) => {
+            return {
+                coverage,
+                fontSize,
+                selector: typeof selector === "string" ? selector : selector.selector,
+                source
+            }
+        });
     }
 
     /**
