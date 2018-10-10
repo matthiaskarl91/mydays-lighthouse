@@ -6,7 +6,7 @@ const lighthouse = require('./lighthouse');
 
 
 program
-    .version('0.0.1')
+    .version('1.0.0')
     .command('start [mandator]')
     .description('Start with the audit of the given mandator')
     .option('-a, --all')
