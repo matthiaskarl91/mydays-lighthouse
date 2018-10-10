@@ -1,21 +1,12 @@
 const lighthouse = require('lighthouse');
 const chromeLauncher = require('chrome-launcher');
+const config = require('../config');
 
 class AuditService
 {
     constructor() {
-        this.urls = [
-            'https://www.mydays.de',
-            'https://www.mydays.de/erlebnisgeschenke/kulinarische-geschenke'
-        ];
-        this.opts = {
-            chromeFlags: ['--show-paint-rects'],
-            disableDeviceEmulation: true,
-            enableNetworkThrottling: false,
-            throttling: {
-                cpuSlowdownMultiplier: 1
-            }
-        };
+        this.urls = [...config.URLS];
+        this.opts = config.LIGHTHOUSE_CONFIG;
     }
 
     async performAudits(progressbar)
