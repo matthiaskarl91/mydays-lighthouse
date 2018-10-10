@@ -102,8 +102,12 @@ class ElasticQuery {
     /**
      * @param {array} renderBlockingResourcesData 
      */
-    setRenderBlockingResourcesData(renderBlockingResourcesData) {
-        this.renderBlockingResourcesData = renderBlockingResourcesData;
+    setRenderBlockingResourcesData({details} = {}) {
+        if (details) {
+            this.renderBlockingResourcesData = details.items;
+        } else {
+            this.renderBlockingResourcesData = [];
+        }
     }
 
     /**
@@ -116,8 +120,12 @@ class ElasticQuery {
     /**
      * @param {array} usesResponsiveImagesData 
      */
-    setUsesResponsiveImagesData(usesResponsiveImagesData) {
-        this.usesResponsiveImagesData = usesResponsiveImagesData;
+    setUsesResponsiveImagesData({details} = {}) {
+        if (details) {
+            this.usesResponsiveImagesData = details.items;
+        } else {
+            this.usesResponsiveImagesData = [];
+        }
     }
 
     /**
@@ -130,8 +138,12 @@ class ElasticQuery {
     /**
      * @param {array} offscreenImagesData 
      */
-    setOffscreenImagesData(offscreenImagesData) {
-        this.offscreenImagesData = offscreenImagesData;
+    setOffscreenImagesData({details} = {}) {
+        if (details) {
+            this.offscreenImagesData = details.items;
+        } else {
+            this.offscreenImagesData = [];
+        }
     }
 
     /**
@@ -144,8 +156,12 @@ class ElasticQuery {
     /**
      * @param {array} unminifiedCssData 
      */
-    setUnminifiedCssData(unminifiedCssData) {
-        this.unminifiedCssData = unminifiedCssData;
+    setUnminifiedCssData({details} = {}) {
+        if (details) {
+            this.unminifiedCssData = details.items;
+        } else {
+            this.unminifiedCssData = [];
+        }
     }
 
     /**
@@ -158,8 +174,12 @@ class ElasticQuery {
     /**
      * @param {array} unminifiedJSData 
      */
-    setUnminifiedJSData(unminifiedJSData) {
-        this.unminifiedJSData = unminifiedJSData;
+    setUnminifiedJSData({details} = {}) {
+        if (details) {
+            this.unminifiedJSData = details.items;
+        } else {
+            this.unminifiedJSData = [];
+        }
     }
 
     /**
@@ -172,8 +192,12 @@ class ElasticQuery {
     /**
      * @param {array} unusedCssRulesData 
      */
-    setUnusedCssRulesData(unusedCssRulesData) {
-        this.unusedCssRulesData = unusedCssRulesData;
+    setUnusedCssRulesData({details} = {}) {
+        if (details) {
+            this.unusedCssRulesData = details.items;
+        } else {
+            this.unusedCssRulesData = [];
+        }
     }
 
     /**
@@ -186,8 +210,12 @@ class ElasticQuery {
     /**
      * @param {array} usesOptimizedImagesData 
      */
-    setUsesOptimizedImagesData(usesOptimizedImagesData) {
-        this.usesOptimizedImagesData = usesOptimizedImagesData;
+    setUsesOptimizedImagesData({details} = {}) {
+        if (details) {
+            this.usesOptimizedImagesData = details.items;
+        } else {
+            this.usesOptimizedImagesData = [];
+        }
     }
 
     /**
@@ -221,8 +249,12 @@ class ElasticQuery {
     /**
      * @param {float} totalByteWeightData 
      */
-    setTotalByteWeightData(totalByteWeightData) {
-        this.totalByteWeightData = totalByteWeightData;
+    setTotalByteWeightData({details} = {}) {
+        if (details) {
+            this.totalByteWeightData = details.items;
+        } else {
+            this.totalByteWeightData = [];
+        }
     }
 
     /**
@@ -261,24 +293,36 @@ class ElasticQuery {
         this.usesPassiveEventListeners = usesPassiveEventListeners;
     }
 
-    setUsesPassiveEventListenersData(usesPassiveEventListenersData) {
-        this.usesPassiveEventListenersData = usesPassiveEventListenersData;
+    setUsesPassiveEventListenersData({details} = {}) {
+        if (details) {
+            this.usesPassiveEventListenersData = details.items;
+        } else {
+            this.usesPassiveEventListenersData = [];
+        }
     }
 
     setNoDocumentWrite(noDocumentWrite) {
         this.noDocumentWrite = noDocumentWrite;
     }
 
-    setNoDocumentWriteData(noDocumentWriteData) {
-        this.noDocumentWriteData = noDocumentWriteData;
+    setNoDocumentWriteData({details} = {}) {
+        if (details) {
+            this.noDocumentWriteData = details.items;
+        } else {
+            this.noDocumentWriteData = [];
+        }
     }
 
     setExternalAnchorsUseRelNoopener(externalAnchorsUseRelNoopener) {
         this.externalAnchorsUseRelNoopener = externalAnchorsUseRelNoopener;
     }
 
-    setExternalAnchorsUseRelNoopenerData(externalAnchorsUseRelNoopenerData) {
-        this.externalAnchorsUseRelNoopenerData = externalAnchorsUseRelNoopenerData;
+    setExternalAnchorsUseRelNoopenerData({details} = {}) {
+        if (details) {
+            this.externalAnchorsUseRelNoopenerData = details.items;
+        } else {
+            this.externalAnchorsUseRelNoopenerData = [];
+        }
     }
 
     setGeolocationOnStart(geolocationOnStart) {
@@ -289,8 +333,12 @@ class ElasticQuery {
         this.noVulnerableLibraries = noVulnerableLibraries;
     }
 
-    setNoVulnerableLibrariesData(noVulnerableLibrariesData) {
-        this.noVulnerableLibrariesData = noVulnerableLibrariesData;
+    setNoVulnerableLibrariesData({details} = {}) {
+        if (details) {
+            this.noVulnerableLibrariesData = details.items;
+        } else {
+            this.noVulnerableLibrariesData = [];
+        }
     }
 
     setNotificationOnStart(notificationOnStart) {
@@ -301,16 +349,24 @@ class ElasticQuery {
         this.deprecations = deprecations;
     }
 
-    setDeprecationsData(deprecationsData) {
-        this.deprecationsData = deprecationsData;
+    setDeprecationsData({details} = {}) {
+        if (details) {
+            this.deprecationsData = details.items;
+        } else {
+            this.deprecationsData = [];
+        }
     }
 
     setErrorsInConsole(errorsInConsole) {
         this.errorsInConsole = errorsInConsole;
     }
 
-    setErrorsInConsoleData(errorsInConsoleData) {
-        this.errorsInConsoleData = errorsInConsoleData;
+    setErrorsInConsoleData({details} = {}) {
+        if (details) {
+            this.errorsInConsoleData = details.items;
+        } else {
+            this.errorsInConsoleData = [];
+        }
     }
 
     /**
@@ -344,8 +400,12 @@ class ElasticQuery {
         this.linkText = linkText;
     }
 
-    setLinkTextData(linkTextData) {
-        this.linkTextData = linkTextData;
+    setLinkTextData({details} = {}) {
+        if (details) {
+            this.linkTextData = details.items;
+        } else {
+            this.linkTextData = [];
+        }
     }
 
     setIsCrawlable(isCrawlable) {
@@ -368,15 +428,13 @@ class ElasticQuery {
         this.fontsize = fontsize;
     }
 
-    setFontsizeData(fontsizeData) {
-        this.fontsizeData = fontsizeData.map(({coverage, fontSize, selector, source}) => {
-            return {
-                coverage,
-                fontSize,
-                selector: typeof selector === "string" ? selector : selector.selector,
-                source
-            }
-        });
+    setFontsizeData({details} = {}) {
+        let data = [];
+        if (details) {
+            let data = details.items;
+        }
+
+        this.fontsizeData = data;
     }
 
     /**
@@ -391,8 +449,12 @@ class ElasticQuery {
         this.duplicateId = duplicateId;
     }
 
-    setDuplicateIdData(duplicateIdData) {
-        this.duplicateIdData = duplicateIdData;
+    setDuplicateIdData({details} = {}) {
+        if (details) {
+            this.duplicateIdData = details.items;
+        } else {
+            this.duplicateIdData = [];
+        }
     }
 }
 

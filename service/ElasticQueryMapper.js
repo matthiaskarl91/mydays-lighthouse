@@ -27,24 +27,24 @@ class ElasticQueryMapper {
         this.query.setFirstCPUIdle(results[4].rawValue);
         this.query.setEstimatedInputLatency(results[5].rawValue);
         this.query.setRenderBlockingResources(results[6].rawValue);
-        this.query.setRenderBlockingResourcesData(results[6].details.items);
+        this.query.setRenderBlockingResourcesData(results[6]);
         this.query.setUsesResponsiveImages(results[7].displayValue[1]);
-        this.query.setUsesResponsiveImagesData(results[7].details.items);
+        this.query.setUsesResponsiveImagesData(results[7]);
         this.query.setOffscreenImages(results[8].displayValue[1]);
-        this.query.setOffscreenImagesData(results[8].details.items);
+        this.query.setOffscreenImagesData(results[8]);
         this.query.setUnminifiedCss(results[9].rawValue);
-        this.query.setUnminifiedCssData(results[9].details.items);
+        this.query.setUnminifiedCssData(results[9]);
         this.query.setUnminifiedJS(results[10].displayValue[1]);
-        this.query.setUnminifiedJSData(results[10].details.items);
+        this.query.setUnminifiedJSData(results[10]);
         this.query.setUnusedCssRules(results[11].displayValue[1]);
-        this.query.setUnusedCssRulesData(results[11].details.items);
+        this.query.setUnusedCssRulesData(results[11]);
         this.query.setUsesOptimizedImages(results[12].displayValue[1]);
-        this.query.setUsesOptimizedImagesData(results[12].details.items);
+        this.query.setUsesOptimizedImagesData(results[12]);
         this.query.setUsesWebpImages(results[13].displayValue[1]);
         this.query.setUsesRelPreconnect(results[15].rawValue);
         this.query.setTimeToFirstByte(results[16].rawValue);
         this.query.setTotalByteWeight(results[20].displayValue[1]);
-        this.query.setTotalByteWeightData(results[20].details.items);
+        this.query.setTotalByteWeightData(results[20]);
         this.query.setDomSize(results[22].rawValue);
         this.query.setBootupTime(results[27].rawValue);
         this.query.setMainThreadWorkBreakdown(results[29].rawValue);
@@ -54,14 +54,15 @@ class ElasticQueryMapper {
         const {results} = bestPractice;
         this.query.setBestPractice(bestPractice.score);
         this.query.setUsesPassiveEventListeners(results[4].rawValue);
-        this.query.setUsesPassiveEventListenersData(results[4].details.items);
+        this.query.setUsesPassiveEventListenersData(results[4]);
         this.query.setNoDocumentWrite(results[5].rawValue);
         this.query.setNoDocumentWriteData(results[5].details.items);
         this.query.setExternalAnchorsUseRelNoopener(results[6].rawValue);
-        this.query.setExternalAnchorsUseRelNoopenerData(results[6].details.items);
+        this.query.setExternalAnchorsUseRelNoopenerData(results[6]);
         this.query.setGeolocationOnStart(results[7].rawValue);
         this.query.setNoVulnerableLibraries(results[9].rawValue);
-        this.query.setNoVulnerableLibrariesData(results[9].details.items);
+        
+        this.query.setNoVulnerableLibrariesData(results[9]);
         this.query.setNotificationOnStart(results[10].rawValue);
         this.query.setDeprecations(results[11].rawValue);
         this.query.setDeprecationsData(results[11].details.items);
@@ -82,14 +83,14 @@ class ElasticQueryMapper {
         this.query.setHreflang(results[7].rawValue);
         this.query.setCanonical(results[8].rawValue);
         this.query.setFontsize(results[9].rawValue);
-        this.query.setFontsizeData(results[9].details.items);
+        this.query.setFontsizeData(results[9]);
     }
 
     setAccessibility({accessibility}) {
         const {results} = accessibility;
         this.query.setSeo(accessibility.score);
         this.query.setDuplicateId(results[15].rawValue);
-        this.query.setDuplicateId(results[15].details.items);
+        this.query.setDuplicateId(results[15]);
     }
 }
 
