@@ -12,7 +12,7 @@ const config = {
         'https://www.mydays.de/erlebnis/ballonfahrt'
     ],
     LIGHTHOUSE_CONFIG: {
-        chromeFlags: ['--show-paint-rects', '--no-sandbox'],
+        chromeFlags: ['--show-paint-rects', '--no-sandbox', '--headless'],
         disableDeviceEmulation: true,
         enableNetworkThrottling: false,
         throttling: {
