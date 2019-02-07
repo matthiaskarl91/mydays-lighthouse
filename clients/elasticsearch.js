@@ -7,7 +7,7 @@ class ElasticsearchClient {
 
     constructor() {
         this.client = new elasticsearch.Client({
-            host: 'localhost:9200',
+            host: '10.0.70.127:9200',
             log: 'trace'
         });
     }

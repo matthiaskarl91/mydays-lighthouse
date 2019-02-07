@@ -114,7 +114,13 @@ class ElasticQuery {
    * @param {float} usesResponsiveImages
    */
   setUsesResponsiveImages({ displayValue } = []) {
-    this.usesResponsiveImages = displayValue.pop();
+    if ( 'object' == typeof displayValue ) {
+      this.usesResponsiveImages = displayValue.pop();
+    } else if ('undefined' == typeof displayValue) {
+      this.usesResponsiveImages = '';
+    } else {
+      this.usesResponsiveImages = displayValue.replace(/[^0-9]+/g, '');
+    }
   }
 
   /**
@@ -132,7 +138,13 @@ class ElasticQuery {
    * @param {float} offscreenImages
    */
   setOffscreenImages({ displayValue } = []) {
-    this.offscreenImages = displayValue.pop();
+    if ( 'object' == typeof displayValue ) {
+      this.offscreenImages = displayValue.pop();
+    } else if ('undefined' == typeof displayValue) {
+      this.offscreenImages = '';
+    } else {
+      this.offscreenImages = displayValue.replace(/[^0-9]+/g, '');
+    }
   }
 
   /**
@@ -168,7 +180,13 @@ class ElasticQuery {
    * @param {float} unminifiedJS
    */
   setUnminifiedJS({ displayValue } = []) {
-    this.unminifiedJS = displayValue.pop();
+    if ( 'object' == typeof displayValue ) {
+      this.unminifiedJS = displayValue.pop();
+    } else if ('undefined' == typeof displayValue) {
+      this.unminifiedJS = '';
+    } else {
+      this.unminifiedJS = displayValue.replace(/[^0-9]+/g, '');
+    }
   }
 
   /**
@@ -186,7 +204,13 @@ class ElasticQuery {
    * @param {float} unusedCssRules
    */
   setUnusedCssRules({ displayValue } = []) {
-    this.unusedCssRules = displayValue.pop();
+    if ( 'object' == typeof displayValue ) {
+      this.unusedCssRules = displayValue.pop();
+    } else if ('undefined' == typeof displayValue) {
+      this.unusedCssRules = '';
+    } else {
+      this.unusedCssRules = displayValue.replace(/[^0-9]+/g, '');
+    }
   }
 
   /**
@@ -204,7 +228,13 @@ class ElasticQuery {
    * @param {float} usesOptimizedImages
    */
   setUsesOptimizedImages({ displayValue } = []) {
-    this.usesOptimizedImages = displayValue.pop();
+    if ( 'object' == typeof displayValue ) {
+      this.usesOptimizedImages = displayValue.pop();
+    } else if ('undefined' == typeof displayValue) {
+      this.usesOptimizedImages = '';
+    } else {
+      this.usesOptimizedImages = displayValue.replace(/[^0-9]+/g, '');
+    }
   }
 
   /**
@@ -222,7 +252,15 @@ class ElasticQuery {
    * @param {float} usesWebpImages
    */
   setUsesWebpImages({ displayValue } = []) {
-    this.usesWebpImages = displayValue;
+    if ( 'object' == typeof displayValue ) {
+      this.usesWebpImages = displayValue.pop();
+    } else if ('undefined' == typeof displayValue) {
+      this.usesWebpImages = '';
+    } else {
+      this.usesWebpImages = displayValue.replace(/[^0-9]+/g, '');
+    }
+
+    //this.usesWebpImages = displayValue;
   }
 
   /**
@@ -236,14 +274,30 @@ class ElasticQuery {
    * @param {float} timeToFirstByte
    */
   setTimeToFirstByte(timeToFirstByte) {
-    this.timeToFirstByte = timeToFirstByte;
+    if ( 'object' == typeof displayValue ) {
+      this.timeToFirstByte = displayValue.pop();
+    } else if ('undefined' == typeof displayValue) {
+      this.timeToFirstByte = '';
+    } else {
+      this.timeToFirstByte = displayValue.replace(/[^0-9]+/g, '');
+    }
+
+    //this.timeToFirstByte = timeToFirstByte;
   }
 
   /**
    * @param {float} totalByteWeight
    */
   setTotalByteWeight({ displayValue } = []) {
-    this.totalByteWeight = displayValue;
+    if ( 'object' == typeof displayValue ) {
+      this.totalByteWeight = displayValue.pop();
+    } else if ('undefined' == typeof displayValue) {
+      this.totalByteWeight = '';
+    } else {
+      this.totalByteWeight = displayValue.replace(/[^0-9]+/g, '');
+    }
+
+    //this.totalByteWeight = displayValue;
   }
 
   /**
@@ -275,7 +329,7 @@ class ElasticQuery {
    * @param {float} mainthreadWorkBreakdown
    */
   setMainThreadWorkBreakdown(mainthreadWorkBreakdown) {
-    this.mainthreadWorkBreakdown = mainthreadWorkBreakdown;
+    this.mainthreadWorkBreakdown = parseInt(mainthreadWorkBreakdown, 10);
   }
 
   /**
